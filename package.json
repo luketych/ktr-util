@@ -1,5 +1,5 @@
 {
-  "name": "@ktr_srt/util",
+  "name": "@ktr-srt/util",
   "version": "0.1.0",
   "type": "module",
   "main": "index.js",
@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "chai": "^4.3.7",
-    "flow-bin": "^0.190.0",
     "mocha": "^10.1.0"
   }
 }
