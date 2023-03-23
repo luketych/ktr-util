@@ -1,0 +1,32 @@
+{
+  "name": "@ktr_srt/util",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "index.js",
+  "packageManager": "yarn@3.5.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ktr-srt.git",
+    "directory": "util"
+  },
+  "scripts": {
+    "dev": "node --experimental-specifier-resolution ./index.js",
+    "start": "node --experimental-specifier-resolution node ./index.js",
+    "test": "mocha --reporter spec"
+  },
+  "dependencies": {
+    "cross-env": "5.0.5",
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^1.3.7",
+    "date-holidays": "^3.16.11",
+    "dotenv": "^16.0.3",
+    "lodash-es": "^4.17.21",
+    "moment-timezone": "^0.5.37",
+    "nodemailer": "^6.8.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "flow-bin": "^0.190.0",
+    "mocha": "^10.1.0"
+  }
+}
