@@ -9,7 +9,7 @@ export { importEnvironmentVariables }
  *  @param {string} envPath
  *  @returns {object} envars 
  */
-function importEnvironmentVariables(prefix='', envPath='.') {
+function importEnvironmentVariables({ prefix='', envPath='.' }) {
   const filename = envPath.split('/').pop()
   if (filename !== '.env') envPath = path.join(envPath, "/", '.env')
 
