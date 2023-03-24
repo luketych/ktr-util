@@ -8,7 +8,13 @@ function _fileExists(filePath) {
 }
 
 
-function getPkgDir() {
+/**
+ * 
+ * @param {*} __dirname 
+ * @param {*} pkgName from package.json
+ * @returns 
+ */
+function getPkgDirname(__dirname, pkgName) {
   if (!__dirname.includes('.yarn')) return __dirname
 
   const files = fs.readdirSync(__dirname.split('.yarn')[0], { withFileTypes: true })
@@ -16,8 +22,6 @@ function getPkgDir() {
   const visibleFolders = files
   .filter(file => file.isDirectory() && !file.name.startsWith('.'))
   .map(file => file.name)
-
-  const pkgName = pkg.name
 
   for (const dir of visibleFolders) {
     let potentialPath = path.join(__dirname.split('.yarn')[0], dir, pkgName.split('/').at(-1))
