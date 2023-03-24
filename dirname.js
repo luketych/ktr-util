@@ -1,3 +1,7 @@
+import fs from 'fs'
+import path from 'path'
+
+
 function _fileExists(filePath) {
   try {
     fs.accessSync(filePath, fs.constants.F_OK);
