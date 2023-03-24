@@ -33,4 +33,4 @@ function getPkgDirname(__dirname, pkgName) {
 }
 
 
-export { getPkgDir }
+export { getPkgDirname }

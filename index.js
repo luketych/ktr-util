@@ -3,7 +3,7 @@ import { omit } from 'lodash-es'
 export { dateDiffInSeconds, datePlusMS, dateMinusMS, 
          dateToDatetimeStr, getCurrentTime } from './date.js'
 
-export { getDirName } from './dirname.js'
+export { getPkgDirname } from './dirname.js'
 
 export { importEnvironmentVariables } from './env.js'
 export { sendMail } from './mail.js'
