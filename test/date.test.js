@@ -1,5 +1,5 @@
 import chai from 'chai'
-import {describe, it} from 'mocha'
+import { describe, it } from 'mocha'
 
 const expect = chai.expect
 

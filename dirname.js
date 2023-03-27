@@ -13,22 +13,21 @@ function _fileExists(filePath) {
 
 
 /**
- * 
- * @param {*} __dirname 
+ * @param {*} dirname __dirname
  * @param {*} pkgName from package.json
  * @returns 
  */
-function getPkgDirname(__dirname, pkgName) {
-  if (!__dirname.includes('.yarn')) return __dirname
+function getPkgDirname(dirname, pkgName) {
+  if (!dirname.includes('.yarn')) return dirname
 
-  const files = fs.readdirSync(__dirname.split('.yarn')[0], { withFileTypes: true })
+  const files = fs.readdirSync(dirname.split('.yarn')[0], { withFileTypes: true })
 
   const visibleFolders = files
   .filter(file => file.isDirectory() && !file.name.startsWith('.'))
   .map(file => file.name)
 
   for (const dir of visibleFolders) {
-    let potentialPath = path.join(__dirname.split('.yarn')[0], dir, pkgName.split('/').at(-1))
+    let potentialPath = path.join(dirname.split('.yarn')[0], dir, pkgName.split('/').at(-1))
     
     if (_fileExists(potentialPath)) {
       return potentialPath
@@ -37,4 +36,11 @@ function getPkgDirname(__dirname, pkgName) {
 }
 
 
-export { getPkgDirname }
+function getKtrSrtRootDir(dirname) {
+  if (!dirname.includes('@ktr-srt')) throw new Error('Not in ktr-srt workspace')
+  const rootDir = dirname.split('/').slice(0, -1).join('/');
+  return rootDir;
+}
+
+
+export { getPkgDirname, getKtrSrtRootDir }

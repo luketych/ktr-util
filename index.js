@@ -5,7 +5,7 @@ export { dateDiffInSeconds, datePlusMS, dateMinusMS,
 
 export { getPkgDirname } from './dirname.js'
 
-export { importEnvironmentVariables } from './env.js'
+export { importAllEnvironmentVariables, importEnvironmentVariables } from './env.js'
 export { sendMail } from './mail.js'
 
 export { getInBetweenMarketOpenDates, getMarketStateObject, 
