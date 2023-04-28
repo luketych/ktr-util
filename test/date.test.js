@@ -3,7 +3,7 @@ import { describe, it } from 'mocha'
 
 const expect = chai.expect
 
-import { isMarketOpenToday } from '../marketState.js'
+import { isMarketOpenToday } from '#src'
 
 
 describe("Test", function() {

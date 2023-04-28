@@ -2,7 +2,8 @@
   "name": "@ktr-srt/util",
   "version": "0.1.0",
   "type": "module",
-  "main": "index.js",
+  "private": true,
+  "main": "src/index.js",
   "packageManager": "yarn@3.5.0",
   "repository": {
     "type": "git",
@@ -12,7 +13,13 @@
   "scripts": {
     "dev": "node --experimental-specifier-resolution ./index.js",
     "start": "node --experimental-specifier-resolution node ./index.js",
-    "test": "mocha --reporter spec"
+    "test": "mocha test --recursive --reporter spec --exit --timeout 10000"
+  },
+  "imports": {
+    "#projectRoot": "./",
+    "#projectRoot/*": "./*.js",
+    "#src": "./src/index.js",
+    "#src/*": "./src/*.js"
   },
   "dependencies": {
     "date-fns": "^2.29.3",

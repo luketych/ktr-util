@@ -1,13 +1,13 @@
 import path from 'path'
 
-import { loadPackageJSONasObj } from './pkgJSON.js'
+import loadPackageJSONasObj from '#projectRoot/src/pkgJSON/getPackageJSONasObj'
 
 
 /** Starts at cwd, and finds package.json by walking up the directory tree.
  * Then it finds all the scripts that have 'mocha' in them, and parses them
  * to find the test directory.
  */
-async function getTestDir() {
+export default async function getTestDir() {
     const cwd = process.cwd()
     const packageJSONobj = await loadPackageJSONasObj(cwd)
     const packageJSONscripts = packageJSONobj.scripts
@@ -26,6 +26,3 @@ async function getTestDir() {
     
     return testDirs[0]
 }
-
-
-export { getTestDir }

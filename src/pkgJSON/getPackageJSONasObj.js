@@ -8,7 +8,11 @@ import path from 'path'
  * @param {*} dir 
  * @returns 
  */
-export default async function loadPackageJSONasObj(dir) {
+export default async function getPackageJSONasObj(dir) {
+    if (!dir) { 
+      dir = process.cwd()
+      console.log(`getPackageJSONasObj(): No directory specified. Using current working directory: ${dir}`)
+    }
     if (dir === '/') throw new Error('Could not find package.json')
 
     let packageJSONpath
@@ -22,6 +26,6 @@ export default async function loadPackageJSONasObj(dir) {
     } catch (err) {
         // console.error('Failed to read or parse package.json:', err);
         // throw err;
-        return await loadPackageJSONasObj(path.join(dir, '..'))
+        return await getPackageJSONasObj(path.join(dir, '..'))
     }
 }

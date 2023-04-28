@@ -45,11 +45,5 @@ async function getPkgDirname(dirname, pkgName) {
 }
 
 
-function getKtrSrtRootDir(dirname) {
-  if (!dirname.includes('@ktr-srt')) throw new Error('Not in ktr-srt workspace')
-  const rootDir = dirname.split('/').slice(0, -1).join('/');
-  return rootDir;
-}
 
-
-export { getPkgDirname, getKtrSrtRootDir }
+export { getPkgDirname }

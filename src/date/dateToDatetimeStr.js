@@ -1,48 +1,6 @@
-export { dateDiffInSeconds, datePlusMS, dateMinusMS, dateToDatetimeStr, getCurrentTime }
-
-
-/** Returns the difference between two dates in seconds.
- *  @param {Date} d1
- *  @param {Date} d2
- *  @returns {number} seconds between date 1 & date 2 (d2-d1)
- *  https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
- */
-function dateDiffInSeconds(d1, d2) {
-    // const t1 = moment.utc(d1).unix()
-    // const t2 = moment.utc(d2).unix()
-    const t1 = d1.getTime()
-    const t2 = d2.getTime()
-
-    const secs = Math.floor((t2 - t1) / 1000)
-
-    
-    return secs
-}
-
-
-/**
- *  @param {Date}   date
- *  @param {number} numMS
- *  @returns {Date} 
- */
-function datePlusMS(date, numMS) {
-    return new Date(date.getTime() + numMS)
-}
-
-
-/**
- *  @param {Date}   date
- *  @param {number} numMS
- *  @returns {Date}
- */
-function dateMinusMS(date, numMS) {
-    return new Date(date.getTime() - numMS)
-}
-
-
 // @datetime, @timezone
 // format  datetime to a string in the format of YYYY-MM-DD HH:mm:ss
-function dateToDatetimeStr(dt, timezone='utc') {
+export default function dateToDateTimeStr(dt, timezone='utc') {
     let fullDatetimeStr
 
     if (timezone && timezone.toLowerCase() === 'local') { // old way
@@ -79,13 +37,4 @@ function dateToDatetimeStr(dt, timezone='utc') {
     }
 
     return fullDatetimeStr
-}
-
-
-/**
- *  @returns {string}
- */
-function getCurrentTime() {
-    let today = new Date()
-    return today.toISOString().split('T')[1].split('.')[0]
 }
