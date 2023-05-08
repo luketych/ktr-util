@@ -1,13 +1,18 @@
 import { omit } from 'lodash-es'
 
+// @test
 
 import changePropNames from './props/changePropNames.js'
+import checkPathExists from './fs/checkPathExists.js'
+import createDirsAndFiles from './fs/createDirsAndFiles.js'
 import dateDiffInSeconds from './date/dateDiffInSeconds.js'
 import dateMinusMS from './date/dateMinusMS.js'
 import datePlusMS from './date/datePlusMS.js'
 import dateToDatetimeStr from './date/dateToDatetimeStr.js'
+import deleteDirsAndFiles from './fs/deleteDirsAndFiles.js'
 import filterForProps from './props/filterForProps.js'
 import filterOutProps from './props/filterOutProps.js'
+import getAbsPathOfDirName from './fs/getAbsPathOfDirName.js'
 import getCurrentTime from './date/getCurrentTime.js'
 import getDirname from './fs/getDirname.js'
 import getFilename from './fs/getFilename.js'
@@ -32,32 +37,38 @@ import walkAndFindAll from './fs/walkAndFindAll.js'
 import walkAndFindOne from './fs/walkAndFindOne.js'
 
 
-// date
+
 export { dateDiffInSeconds, datePlusMS, dateMinusMS, 
          dateToDatetimeStr, getCurrentTime }
 
 
-export { getPkgDirname } from './dirname.js'
-
 // fs
-export { getDirname, getFilename, getFilenameWithoutExt, isPath, walkAndFindAll, walkAndFindOne }
+export { checkPathExists, createDirsAndFiles, deleteDirsAndFiles, 
+         getAbsPathOfDirName, getDirname, getFilename, getFilenameWithoutExt, 
+         isPath, walkAndFindAll, walkAndFindOne }
+
 
 // mail
 export { sendMail }
+
 
 // market
 export { getInBetweenMarketOpenDates, getMarketStateObject, 
          getPreviousMarketOpenDT, getTimeslot,
          isMarketClosed, isMarketOpen, isMarketOpenToday }
 
+
 // pkgJSON
 export { getFullPackageName, getPackageName, getScopeName, getPackageJSONasObj }
+
 
 // props
 export { changePropNames, filterForProps, filterOutProps }
 
+
 // test
 export { getTestDir }
+
 
 // timezone
 export { nyToUTC, utcToNY }

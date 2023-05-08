@@ -5,11 +5,6 @@
   "private": true,
   "main": "src/index.js",
   "packageManager": "yarn@3.5.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ktr-srt.git",
-    "directory": "util"
-  },
   "scripts": {
     "dev": "node --experimental-specifier-resolution ./index.js",
     "start": "node --experimental-specifier-resolution node ./index.js",
