@@ -1,6 +1,7 @@
 import Holidays from 'date-holidays'
 
-import {utcToNY} from '#projectRoot/src/archive/index'
+import {utcToNY} from '#projectRoot/src/index'
+
 
 
 /**

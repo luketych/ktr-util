@@ -13,6 +13,7 @@ import deleteDirsAndFiles from './fs/deleteDirsAndFiles.js'
 import filterForProps from './props/filterForProps.js'
 import filterOutProps from './props/filterOutProps.js'
 import getAbsPathOfDirName from './fs/getAbsPathOfDirName.js'
+import getCaller from './node/getCaller.js'
 import getCurrentTime from './date/getCurrentTime.js'
 import getDirname from './fs/getDirname.js'
 import getFilename from './fs/getFilename.js'
@@ -37,38 +38,93 @@ import walkAndFindAll from './fs/walkAndFindAll.js'
 import walkAndFindOne from './fs/walkAndFindOne.js'
 
 
+export {changePropNames}
+export {checkPathExists}
+export {createDirsAndFiles}
+export {dateDiffInSeconds}
+export {dateMinusMS}
+export {datePlusMS}
+export {dateToDatetimeStr}
+export {deleteDirsAndFiles}
+export {filterForProps}
+export {filterOutProps}
+export {getAbsPathOfDirName}
+export {getCaller}
+export {getCurrentTime}
+export {getDirname}
+export {getFilename}
+export {getFilenameWithoutExt}
+export {getFullPackageName}
+export {getInBetweenMarketOpenDates}
+export {getMarketStateObject}
+export {getPreviousMarketOpenDT}
+export {getPackageName}
+export {getScopeName}
+export {getTestDir}
+export {getTimeslot}
+export {isMarketClosed}
+export {isMarketOpen}
+export {isMarketOpenToday}
+export {isPath}
+export {getPackageJSONasObj}
+export {nyToUTC}
+export {sendMail}
+export {utcToNY}
+export {walkAndFindAll}
+export {walkAndFindOne}
 
-export { dateDiffInSeconds, datePlusMS, dateMinusMS, 
+
+
+
+// date
+const date = { dateDiffInSeconds, datePlusMS, dateMinusMS, 
          dateToDatetimeStr, getCurrentTime }
 
 
 // fs
-export { checkPathExists, createDirsAndFiles, deleteDirsAndFiles, 
+const fs = { checkPathExists, createDirsAndFiles, deleteDirsAndFiles, 
          getAbsPathOfDirName, getDirname, getFilename, getFilenameWithoutExt, 
          isPath, walkAndFindAll, walkAndFindOne }
 
 
 // mail
-export { sendMail }
+const mail = { sendMail }
 
 
 // market
-export { getInBetweenMarketOpenDates, getMarketStateObject, 
+const market = { getInBetweenMarketOpenDates, getMarketStateObject, 
          getPreviousMarketOpenDT, getTimeslot,
          isMarketClosed, isMarketOpen, isMarketOpenToday }
 
 
+// node
+const node = { getCaller }
+
+
 // pkgJSON
-export { getFullPackageName, getPackageName, getScopeName, getPackageJSONasObj }
+const pkgJSON = { getFullPackageName, getPackageName, getScopeName, getPackageJSONasObj }
 
 
 // props
-export { changePropNames, filterForProps, filterOutProps }
+const props = { changePropNames, filterForProps, filterOutProps }
 
 
 // test
-export { getTestDir }
+const test = { getTestDir }
 
 
 // timezone
-export { nyToUTC, utcToNY }
+const timezone = { nyToUTC, utcToNY }
+
+
+export default { 
+  date, 
+  fs, 
+  mail, 
+  market, 
+  node, 
+  pkgJSON, 
+  props, 
+  test, 
+  timezone 
+}
