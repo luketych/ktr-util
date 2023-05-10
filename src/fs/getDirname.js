@@ -5,7 +5,9 @@ import { dirname } from 'path';
 export default function getDirname(importMetaURL) {
     if (!importMetaURL) throw new Error('importMetaURL is required')
 
-    const {url} = importMetaURL
+    const {_url} = importMetaURL
+
+    const url = (_url) ? new URL(_url) : importMetaURL
 
     const currentFilePath = fileURLToPath(url)
 
