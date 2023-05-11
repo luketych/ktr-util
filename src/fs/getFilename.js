@@ -1,3 +1,6 @@
+import { fileURLToPath } from 'url'
+
+
 export default function getFilename(importMetaURL) {
     if (!importMetaURL) throw new Error('importMetaURL is required')
 

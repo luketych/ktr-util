@@ -7,7 +7,7 @@ export default function getDirname(importMetaURL) {
 
     const {_url} = importMetaURL
 
-    const url = (_url) ? new URL(_url) : importMetaURL
+    const url = (_url) ? new URL(_url) : importMetaURL.url
 
     const currentFilePath = fileURLToPath(url)
 
