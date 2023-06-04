@@ -2,7 +2,19 @@ import fs from 'fs'
 import path from 'path'
 
 
-export default async function (name, startDirPath, endPath='/') {
+
+/**
+ * walks from startDirPath to endPath, looking for a file/folder named 'name'
+ * @date 5/26/2023 - 11:35:53 AM
+ *
+ * @export
+ * @async
+ * @param {*} name
+ * @param {*} startDirPath
+ * @param {string} [endPath='/']
+ * @returns {unknown}
+ */
+export default async function walkUpAndFindOne(name, startDirPath, endPath='/') {
   if (!startDirPath || path.extname(startDirPath)) throw new Error(`Invalid startPath: ${startDirPath}`)
   
   let currPath = path.resolve(startDirPath)
@@ -18,7 +30,6 @@ export default async function (name, startDirPath, endPath='/') {
       }
 
       if (files.includes(name)) return path.resolve(currPath, name)
-
       else currPath = path.resolve(currPath, '..')
     
   } while (currPath !== endPath)

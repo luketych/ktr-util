@@ -33,7 +33,7 @@ export default function getMarketStateObject(dt = ( new Date() )) {
 
     const day = dt.getDay()
 
-    if (day == 6 || day == 7) {
+    if (day == 0 || day == 6) {
         return {
           state: 'CLOSED',
           reason: 'weekend'

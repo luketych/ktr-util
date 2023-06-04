@@ -12,6 +12,7 @@ import dateToDatetimeStr from './date/dateToDatetimeStr.js'
 import deleteDirsAndFiles from './fs/deleteDirsAndFiles.js'
 import filterForProps from './props/filterForProps.js'
 import filterOutProps from './props/filterOutProps.js'
+import stringifyFirstLayer from './json/stringifyFirstLayer.js'
 import getAbsPathOfDirName from './fs/getAbsPathOfDirName.js'
 import getCaller from './node/getCaller.js'
 import getCurrentTime from './date/getCurrentTime.js'
@@ -33,9 +34,10 @@ import isPath from './fs/isPath.js'
 import getPackageJSONasObj from './pkgJSON/getPackageJSONasObj.js'
 import nyToUTC from './timezone/nyToUTC.js'
 import sendMail from './mail/sendMail.js'
+import setupStackTrace from './stackTrace/setupStackTrace.js'
 import utcToNY from './timezone/utcToNY.js'
-import walkAndFindAll from './fs/walkAndFindAll.js'
-import walkAndFindOne from './fs/walkAndFindOne.js'
+import walkUpAndFindAll from './fs/walkUpAndFindAll.js'
+import walkUpAndFindOne from './fs/walkUpAndFindOne.js'
 
 
 export {changePropNames}
@@ -48,6 +50,7 @@ export {dateToDatetimeStr}
 export {deleteDirsAndFiles}
 export {filterForProps}
 export {filterOutProps}
+export {stringifyFirstLayer}
 export {getAbsPathOfDirName}
 export {getCaller}
 export {getCurrentTime}
@@ -69,9 +72,10 @@ export {isPath}
 export {getPackageJSONasObj}
 export {nyToUTC}
 export {sendMail}
+export {setupStackTrace}
 export {utcToNY}
-export {walkAndFindAll}
-export {walkAndFindOne}
+export {walkUpAndFindAll}
+export {walkUpAndFindOne}
 
 
 
@@ -84,7 +88,11 @@ const date = { dateDiffInSeconds, datePlusMS, dateMinusMS,
 // fs
 const fs = { checkPathExists, createDirsAndFiles, deleteDirsAndFiles, 
          getAbsPathOfDirName, getDirname, getFilename, getFilenameWithoutExt, 
-         isPath, walkAndFindAll, walkAndFindOne }
+         isPath, walkUpAndFindAll, walkUpAndFindOne }
+
+
+// json
+const json = { stringifyFirstLayer }
 
 
 // mail
@@ -109,6 +117,10 @@ const pkgJSON = { getFullPackageName, getPackageName, getScopeName, getPackageJS
 const props = { changePropNames, filterForProps, filterOutProps }
 
 
+// stackTrace
+const stackTrace = { setupStackTrace }
+
+
 // test
 const test = { getTestDir }
 
@@ -118,13 +130,15 @@ const timezone = { nyToUTC, utcToNY }
 
 
 export default { 
-  date, 
-  fs, 
-  mail, 
-  market, 
-  node, 
-  pkgJSON, 
-  props, 
-  test, 
-  timezone 
+  date,
+  fs,
+  json,
+  mail,
+  market,
+  node,
+  pkgJSON,
+  props,
+  stackTrace,
+  test,
+  timezone
 }

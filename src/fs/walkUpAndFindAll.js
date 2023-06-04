@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 
-export default async function (name, startDirPath, endPath='/') {
+export default async function walkUpAndFindAll(name, startDirPath, endPath='/') {
   if (!startDirPath || path.extname(startDirPath)) throw new Error(`Invalid startPath: ${startDirPath}`)
   
   let currPath = startDirPath
