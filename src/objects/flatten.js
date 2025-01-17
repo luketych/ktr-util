@@ -23,6 +23,10 @@ export default function flatten(obj, {
   options={ flattenDepth, keepParentKey }
 }={}) {
 
+  if (!flattenDepth) {
+    throw new Error('flattenDepth is required')
+  }
+
   const result = {}
 
   const _options = Object.assign({}, DEFAULT_OPTIONS, options)
