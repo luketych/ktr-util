@@ -1,6 +1,6 @@
 import { exec, execSync } from 'child_process'
 
-import { extractObjectsFromString } from '@ktr-srt/util'
+import { extractObjectsFromString } from 'ktr-util'
 
 
 

@@ -4,7 +4,7 @@ import getPackageJSONasObj from "./getPackageJSONasObj.js"
 /**
  * Returns the pacakge name from the package.json file.
  * ie util
- * If it's scoped, it returns the tail. ie @ktr-srt/util => util.
+ * If it's scoped, it returns the tail. ie ktr-util => util.
  * 
  * If no pkgJSONobj is passed, it will get the package.json file from the the dirname, or cwd.
  * 

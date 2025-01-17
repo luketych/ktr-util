@@ -2,8 +2,8 @@ import getPackageJSONasObj from "./getPackageJSONasObj.js"
 
 
 /**
- * Returns the pacakge name from the package.json file. ie @ktr-srt/util
- * If it's scoped, it returns ie @ktr-srt/util
+ * Returns the pacakge name from the package.json file. ie ktr-util
+ * If it's scoped, it returns ie ktr-util
  * @param {object} pkgJSONobj
 * @param {string} dirname
  * @returns 
