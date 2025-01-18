@@ -39,7 +39,7 @@ function processKeys(resultObject, numLevelsToFlatten, separator="__") {
  * // Returns {a_b_c: 1}
  */
 export default function flatten(obj,
-  { parentKey = '', currentLevel = 0, numLevelsToFlatten = 1, keepParentKey = false, separator = "__" } = {}
+  { parentKey = '', currentLevel = 0, numLevelsToFlatten = 1, separator = "__" } = {}
 ) {
   const resultObject = {};
 
@@ -52,7 +52,6 @@ export default function flatten(obj,
           currentLevel: currentLevel + 1,
           parentKey: newKey,
           numLevelsToFlatten,
-          keepParentKey
         }));
       } else {
         resultObject[newKey] = obj[key];

@@ -32,5 +32,10 @@ describe("Flatten an object", function() {
     const flattened = flatten(obj, {numLevelsToFlatten: 2, separator: "."})
     expect(flattened).to.deep.equal({"a\\.b\\.c": 1})
   })
- 
+
+  it("should flatten an object completely using __ as the separator, and keepParentKey=true", function() {
+    const obj = {a: {b: {c: 1}}}
+    const flattened = flatten(obj, {numLevelsToFlatten: 2, separator: "__", keepParentKey: true})
+    expect(flattened).to.deep.equal({"a__b__c": 1})
+  }) 
 }) 
