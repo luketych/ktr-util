@@ -48,7 +48,7 @@ describe("Test", function() {
     })
 
     it("should decolorize the string.", function() {
-        decolorizedResult = stripOutColors(result)
+        decolorizedResult = stripOutColors(colorizedResult)
 
         console.log(decolorizedResult)
     })
