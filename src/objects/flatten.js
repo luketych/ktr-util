@@ -39,9 +39,10 @@ function processKeys(resultObject, numLevelsToFlatten, separator="__") {
  * // Returns {a_b_c: 1}
  */
 export default function flatten(obj,
-  { parentKey = '', currentLevel = 0, numLevelsToFlatten = 1, separator = "__" } = {}
+  { parentKey = '', currentLevel = 0, numLevelsToFlatten = Infinity, separator = "__" } = {}
 ) {
   const resultObject = {};
+
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
