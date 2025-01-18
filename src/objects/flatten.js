@@ -1,84 +1,65 @@
-const DEFAULT_OPTIONS = {
-    flattenDepth:1,
-    keepParentKey:false
+/**
+ * Processes the final flattened object to handle key formatting
+ * @param {Object} resultObject - The flattened object to process
+ * @param {number} numLevelsToFlatten - The original flatten depth setting
+ * @returns {Object} Processed object with formatted keys
+ */
+function processKeys(resultObject, numLevelsToFlatten, separator="__") {
+  if (numLevelsToFlatten === 0) {
+    return resultObject;
+  }
+
+  // Replace dots with separator for final output
+  const entries = Object.entries(resultObject).map(([key, value]) => {
+    const newKey = key.split(".").join(separator);
+
+    // if newKey contains dots, replace with escaped dots
+    if (newKey.includes(".")) {
+      const escapedKey = newKey.replace(/\./g, "\\.");
+      return [escapedKey, value]
+    }
+
+    return [newKey, value];
+  });
+
+  return Object.fromEntries(entries);
 }
 
 /**
- * Recursively flattens a nested object.
+ * Recursively flattens a nested object by combining nested keys with a separator.
  *
- * @param {Object} obj - The input object to be flattened.
-
- * @param {string} [parentKey=''] - The current parent key in the recursive calls.
- * @param {number} [currentLevel=0] - The current recursion level.
-
- * @param {Object} [options]
- * @param {boolean} [options.keepParentKey=false] - Whether to include the parentKey in the newKey.
- * @param {number} [options.keyLevel=1] - Levels of keys to keep (0-based index).
-
- * @returns {Object} - The flattened object.
+ * @param {Object} obj - The input object to be flattened
+ * @param {string} [parentKey=''] - Internal use. The current parent key during recursion
+ * @param {number} [currentLevel=0] - Internal use. The current recursion depth level, starts at 0.
+ * @param {number} numLevelsToFlatten - Required. Number of levels deep to flatten
+ * @returns {Object} A new flattened object with combined key names
+ * @throws {Error} If numLevelsToFlatten option is not provided
+ * @example
+ * flatten({a: {b: {c: 1}}}, {numLevelsToFlatten: 2}) 
+ * // Returns {a_b_c: 1}
  */
-export default function flatten(obj, { 
-  parentKey='',
-  currentLevel=0,
-  options={ flattenDepth, keepParentKey }
-}={}) {
-
-  if (!flattenDepth) {
-    throw new Error('flattenDepth is required')
-  }
-
-  const result = {}
-
-  const _options = Object.assign({}, DEFAULT_OPTIONS, options)
+export default function flatten(obj,
+  { parentKey = '', currentLevel = 0, numLevelsToFlatten = 1, keepParentKey = false, separator = "__" } = {}
+) {
+  const resultObject = {};
 
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
-      const newKey = options.keepParentKey ? `${parentKey ? parentKey + '.' : ''}${key}` : key;
+      const newKey = parentKey ? `${parentKey}.${key}` : key;
 
-      if (typeof obj[key] === 'object' && obj[key] !== null && currentLevel < _options.flattenDepth) {
-        // If the current property is a nested object, make a recursive call with an updated parentKey
-        Object.assign(result, flatten(obj[key], { currentLevel: currentLevel+1, parentKey: newKey, options }));
+      if (currentLevel < numLevelsToFlatten && typeof obj[key] === 'object' && obj[key] !== null) {
+        Object.assign(resultObject, flatten(obj[key], {
+          currentLevel: currentLevel + 1,
+          parentKey: newKey,
+          numLevelsToFlatten,
+          keepParentKey
+        }));
       } else {
-        // If it's a leaf (non-object), assign the value to the final flattened key in the result object
-        result[newKey] = obj[key];
+        resultObject[newKey] = obj[key];
       }
     }
   }
 
-
-  let newResult, newResultEntries 
-  
-  if (currentLevel >= 1) return result
-  else {
-      newResultEntries =  Object.entries(result).map(([key,value]) => {
-          const newKey = key.replace(/\./g, "\\.") // escape dots so they doesn't conflict with dot notation
-
-          return [newKey, value]
-      })
-
-      newResult = Object.fromEntries(newResultEntries)
-
-
-      let test = newResult
-
-      if (_options.flattenDepth == 0) {
-        return newResult
-      }
-      else {
-          
-          // // get rid of the header keys
-          newResultEntries = Object.entries(newResult).map(([key,value]) => {
-              let newKey = key.split("\\.").slice(1).join(".")
-
-              newKey = newKey.replace(/\./g, "\\.") // escape dots so they doesn't conflict with dot notation
-
-              return [newKey, value]
-          })
-
-          newResult = Object.fromEntries(newResultEntries)
-
-
-          return newResult
-      }
-  }
+  // Only process keys at the top level of recursion
+  return currentLevel >= 1 ? resultObject : processKeys(resultObject, numLevelsToFlatten, separator);
 }
