@@ -4,10 +4,9 @@ import fs from 'fs'
 async function _deleteRecursive(pathToDelete) {
   try {
     // Check if path exists
-    fs.access(pathToDelete);
+    await fs.promises.access(pathToDelete);
   } catch (err) {
-    // If path does not exist, resolve immediately
-    return [];
+    throw err
   }
 
   try {
@@ -30,19 +29,29 @@ async function _deleteRecursive(pathToDelete) {
 }
 
 
+/**
+ * Deletes multiple directories and files.
+ * 
+ * @param {string[]} pathsToDelete - Array of paths to delete. Can be files or directories.
+ * @returns {Promise<string[]>} Array of successfully deleted paths. If a path doesn't exist,
+ *                             it won't be included in the returned array.
+ *                             If pathsToDelete is empty, it will return an empty array.
+ * @throws {Error} If there's an error other than ENOENT (file/directory not found)
+ */
 export default async function deleteDirsAndFiles(pathsToDelete) {
   const deletedPaths = [];
 
   return Promise.all(pathsToDelete.map(pathToDelete => _deleteRecursive(pathToDelete)))
-    .then(results => {
+  .then(results => {
       // Flatten the array of deleted paths
       results. forEach(path => {
         if (path) deletedPaths.push(path); // if path is null, it means it was not deleted. Don't add it to the array
       });
+
       return deletedPaths;
-    })
-    .catch(err => {
-      if (err.code === 'ENOENT') return null
+  })
+  .catch(err => {
+      if (err.code === 'ENOENT') return []
       else throw err
-    });
+  });
 }
