@@ -51,7 +51,7 @@ export default async function deleteDirsAndFiles(pathsToDelete) {
       return deletedPaths;
   })
   .catch(err => {
-      if (err.code === 'ENOENT') return []
+      if (errcode === 'ENOENT') return []
       else throw err
   });
 }
