@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 // @test
 
 import cleanStringForObjectExtraction from './controlScript/cleanStringForObjectExtraction.js'
