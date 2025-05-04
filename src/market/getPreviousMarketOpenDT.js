@@ -1,6 +1,4 @@
-import dateFns from 'date-fns'
-
-const {addDays} = dateFns
+import { addDays } from 'date-fns';
 
 
 /** Returns previous day where market is open. For example, if given a monday, it will return

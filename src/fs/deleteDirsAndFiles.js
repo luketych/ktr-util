@@ -1,48 +1,36 @@
-import fs from 'fs'
-
+import fs from 'fs';
+import path from 'path';
 
 async function _deleteRecursive(pathToDelete) {
   try {
-    // Check if path exists
-    fs.access(pathToDelete);
+    await fs.promises.access(pathToDelete); // Ensure it exists
   } catch (err) {
-    // If path does not exist, resolve immediately
-    return [];
+    // If path doesn't exist, resolve with null
+    if (err.code === 'ENOENT') return null;
+    throw err;
   }
 
   try {
-    // Get stats for the path
     const stats = await fs.promises.stat(pathToDelete);
 
     if (stats.isDirectory()) {
-      // Delete directory recursively
-      await fs.promises.rm(pathToDelete, { recursive: true });
-      return pathToDelete;
+      await fs.promises.rm(pathToDelete, { recursive: true, force: true });
     } else {
-      // Delete file
       await fs.promises.unlink(pathToDelete);
-      return pathToDelete;
     }
+
+    return pathToDelete;
   } catch (err) {
-    if (err.code === 'ENOENT') return
-    else throw err
+    if (err.code === 'ENOENT') return null;
+    throw err;
   }
 }
 
-
 export default async function deleteDirsAndFiles(pathsToDelete) {
-  const deletedPaths = [];
+  const results = await Promise.all(
+    pathsToDelete.map((p) => _deleteRecursive(p))
+  );
 
-  return Promise.all(pathsToDelete.map(pathToDelete => _deleteRecursive(pathToDelete)))
-    .then(results => {
-      // Flatten the array of deleted paths
-      results. forEach(path => {
-        if (path) deletedPaths.push(path); // if path is null, it means it was not deleted. Don't add it to the array
-      });
-      return deletedPaths;
-    })
-    .catch(err => {
-      if (err.code === 'ENOENT') return null
-      else throw err
-    });
+  // Filter out any null results (i.e., non-existent paths)
+  return results.filter(Boolean);
 }
