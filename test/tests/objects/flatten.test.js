@@ -11,31 +11,31 @@ describe("Flatten an object", function() {
 
   it("should flatten an object completely using __ as the separator", function() {
     const obj = {a: {b: {c: 1}}}
-    const flattened = flatten(obj, {numLevelsToFlatten: 2, separator: "__"})
+    const flattened = flatten(obj, {flattenDepth: 2, separator: "__"})
     expect(flattened).to.deep.equal({a__b__c: 1})
   })
 
   it("should flatten an object to numLevelsToFlatten=1 using __ as the separator", function() {
     const obj = {a: {b: {c: 1}}}
-    const flattened = flatten(obj, {numLevelsToFlatten: 1, separator: "__"})
+    const flattened = flatten(obj, {flattenDepth: 1, separator: "__"})
     expect(flattened).to.deep.equal({a__b: {c: 1}})
   })
 
   it("should flatten an object to numLevelsToFlatten=1 using - as the separator", function() {
     const obj = {a: {b: {c: 1}}}
-    const flattened = flatten(obj, {numLevelsToFlatten: 1, separator: "-"})
+    const flattened = flatten(obj, {flattenDepth: 1, separator: "-"})
     expect(flattened).to.deep.equal({"a-b": {c: 1}})
   })
 
   it("should flatten an object completely using . as the separator", function() {
     const obj = {a: {b: {c: 1}}}
-    const flattened = flatten(obj, {numLevelsToFlatten: 2, separator: "."})
-    expect(flattened).to.deep.equal({"a\\.b\\.c": 1})
+    const flattened = flatten(obj, {flattenDepth: 2, separator: "."})
+    expect(flattened).to.deep.equal({"a.b.c": 1})
   })
 
   it("should flatten an object completely without specifying numLevelsToFlatten, and using - as the separator", function() {
     const obj = {a: {b: {c: 1}}}
-    const flattened = flatten(obj, {separator: "-"})
+    const flattened = flatten(obj, {flattenDepth: Infinity, separator: "-"})
     expect(flattened).to.deep.equal({"a-b-c": 1})
   })
 }) 

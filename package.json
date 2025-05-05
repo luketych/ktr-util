@@ -15,7 +15,7 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "esbuild src/index.js --format=esm --platform=node --outfile=dist/index.js",
     "build:cjs": "node build-cjs.cjs",
-    "test": "mocha test --recursive --reporter spec --exit --timeout 10000",
+    "test": "yarn mocha test/tests --recursive --reporter spec --exit --timeout 10000",
     "test:importing": "yarn mocha --recursive test-importing/tests --reporter spec --exit"
   },
   "imports": {
