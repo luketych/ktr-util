@@ -19,7 +19,10 @@ if [ ! -f "package.json" ]; then
   "name": "test-importing",
   "private": true,
   "type": "module",
-  "packageManager": "yarn@3.6.0",
+  "packageManager": "yarn@4.9.1",
+  "scripts": {
+    "setup": "bash ./setup.sh"
+  },
   "dependencies": {
     "@ktr-srt/util": "git+https://github.com/luketych/ktr-util.git"
   }
