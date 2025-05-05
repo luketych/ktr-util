@@ -1,0 +1,12 @@
+{
+  "name": "test-importing",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.9.1",
+  "scripts": {
+    "setup": "bash ./setup.sh"
+  },
+  "dependencies": {
+    "ktr-util": "git+ssh://git@github.com:luketych/ktr-util.git"
+  }
+}

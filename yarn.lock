@@ -1167,19 +1167,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ktr-util@git+https://github.com/luketych/ktr-util.git":
-  version: 0.1.0
-  resolution: "ktr-util@https://github.com/luketych/ktr-util.git#commit=f492748fda073362e757ac787cc23c4277b6a16d"
-  dependencies:
-    date-fns: ^2.29.3
-    date-fns-tz: ^1.3.7
-    date-holidays: ^3.16.11
-    dotenv: ^16.0.3
-    nodemailer: ^6.8.0
-  checksum: d2a8e73c1c58ba9a576db9cd458b56ddc97985b5040faef24bddbdfe7589a47be58dc9e0d1d54cddcfff05ecb0f44bb27cd34b6ada35c0503d1d53c116f3cf8a
-  languageName: node
-  linkType: hard
-
 "ktr-util@workspace:.":
   version: 0.0.0-use.local
   resolution: "ktr-util@workspace:."
@@ -1194,7 +1181,6 @@ __metadata:
     dotenv: ^16.0.3
     esbuild: ^0.25.3
     fast-glob: ^3.3.3
-    ktr-util: "git+https://github.com/luketych/ktr-util.git"
     mocha: ^10.1.0
     nodemailer: ^6.8.0
     supports-color: ^10.0.0

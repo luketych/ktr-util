@@ -56,7 +56,24 @@
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    }, {
+    }, 
+    
+    
+    
+    {
+      "name": "test-importing setup",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/test-importing",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": [
+        "run",
+        "setup"
+      ],
+      "console": "integratedTerminal"
+    },
+
+    {
       "type": "node",
       "request": "launch",
       "name": "test:importing",

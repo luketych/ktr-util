@@ -32,13 +32,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chai", "npm:4.5.0"],\
             ["chalk", "npm:5.4.1"],\
             ["date-fns", "npm:2.30.0"],\
-            ["date-fns-tz", "virtual:d429151e71ad16423ad9b5fa8541a94e1283c3906ba7ed42c61dd5c7949ea728e7ad17681a846cff5d92eb800da54c6259ec1250176acf03aa281a6de3d9af70#npm:1.3.8"],\
+            ["date-fns-tz", "virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:1.3.8"],\
             ["date-holidays", "npm:3.24.2"],\
             ["debug", "virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:4.4.0"],\
             ["dotenv", "npm:16.5.0"],\
             ["esbuild", "npm:0.25.3"],\
             ["fast-glob", "npm:3.3.3"],\
-            ["ktr-util", "https://github.com/luketych/ktr-util.git#commit=f492748fda073362e757ac787cc23c4277b6a16d"],\
             ["mocha", "npm:10.8.2"],\
             ["nodemailer", "npm:6.10.1"],\
             ["supports-color", "npm:10.0.0"]\
@@ -745,10 +744,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:d429151e71ad16423ad9b5fa8541a94e1283c3906ba7ed42c61dd5c7949ea728e7ad17681a846cff5d92eb800da54c6259ec1250176acf03aa281a6de3d9af70#npm:1.3.8", {\
-          "packageLocation": "./.yarn/__virtual__/date-fns-tz-virtual-766049e359/0/cache/date-fns-tz-npm-1.3.8-9073c07348-dbf17cb88d.zip/node_modules/date-fns-tz/",\
+        ["virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:1.3.8", {\
+          "packageLocation": "./.yarn/__virtual__/date-fns-tz-virtual-c3bad5de5a/0/cache/date-fns-tz-npm-1.3.8-9073c07348-dbf17cb88d.zip/node_modules/date-fns-tz/",\
           "packageDependencies": [\
-            ["date-fns-tz", "virtual:d429151e71ad16423ad9b5fa8541a94e1283c3906ba7ed42c61dd5c7949ea728e7ad17681a846cff5d92eb800da54c6259ec1250176acf03aa281a6de3d9af70#npm:1.3.8"],\
+            ["date-fns-tz", "virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:1.3.8"],\
             ["@types/date-fns", null],\
             ["date-fns", "npm:2.30.0"]\
           ],\
@@ -1400,32 +1399,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["ktr-util", [\
-        ["https://github.com/luketych/ktr-util.git#commit=f492748fda073362e757ac787cc23c4277b6a16d", {\
-          "packageLocation": "./.yarn/cache/ktr-util-https-d429151e71-d2a8e73c1c.zip/node_modules/ktr-util/",\
-          "packageDependencies": [\
-            ["ktr-util", "https://github.com/luketych/ktr-util.git#commit=f492748fda073362e757ac787cc23c4277b6a16d"],\
-            ["date-fns", "npm:2.30.0"],\
-            ["date-fns-tz", "virtual:d429151e71ad16423ad9b5fa8541a94e1283c3906ba7ed42c61dd5c7949ea728e7ad17681a846cff5d92eb800da54c6259ec1250176acf03aa281a6de3d9af70#npm:1.3.8"],\
-            ["date-holidays", "npm:3.24.2"],\
-            ["dotenv", "npm:16.5.0"],\
-            ["nodemailer", "npm:6.10.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["workspace:.", {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["ktr-util", "workspace:."],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:3.0.0-rc.15"],\
             ["chai", "npm:4.5.0"],\
             ["chalk", "npm:5.4.1"],\
             ["date-fns", "npm:2.30.0"],\
-            ["date-fns-tz", "virtual:d429151e71ad16423ad9b5fa8541a94e1283c3906ba7ed42c61dd5c7949ea728e7ad17681a846cff5d92eb800da54c6259ec1250176acf03aa281a6de3d9af70#npm:1.3.8"],\
+            ["date-fns-tz", "virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:1.3.8"],\
             ["date-holidays", "npm:3.24.2"],\
             ["debug", "virtual:13fbd48920bda02ea4779b61c51e4b0ca1325cce63596ce6ea6bd051b9cb93bd76f866aaa8497b9e0504e23608d87fe8494363866b8fe3dd0a1eda2141801701#npm:4.4.0"],\
             ["dotenv", "npm:16.5.0"],\
             ["esbuild", "npm:0.25.3"],\
             ["fast-glob", "npm:3.3.3"],\
-            ["ktr-util", "https://github.com/luketych/ktr-util.git#commit=f492748fda073362e757ac787cc23c4277b6a16d"],\
             ["mocha", "npm:10.8.2"],\
             ["nodemailer", "npm:6.10.1"],\
             ["supports-color", "npm:10.0.0"]\

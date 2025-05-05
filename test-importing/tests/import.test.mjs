@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { getFilename } from '#src'
+import { getFilename } from 'ktr-util'
 
 describe('Import Test', () => {
   it('should import using import', async () => {

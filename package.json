@@ -16,7 +16,7 @@
     "build:esm": "esbuild src/index.js --format=esm --platform=node --outfile=dist/index.js",
     "build:cjs": "node build-cjs.cjs",
     "test": "mocha test --recursive --reporter spec --exit --timeout 10000",
-    "test:importing": "yarn mocha --recursive test/tests/importing --reporter spec --exit"
+    "test:importing": "yarn mocha --recursive test-importing/tests --reporter spec --exit"
   },
   "imports": {
     "#projectRoot": "./",
@@ -32,7 +32,6 @@
     "debug": "^4.4.0",
     "dotenv": "^16.0.3",
     "fast-glob": "^3.3.3",
-    "ktr-util": "git+https://github.com/luketych/ktr-util.git",
     "nodemailer": "^6.8.0",
     "supports-color": "^10.0.0"
   },
