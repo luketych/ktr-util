@@ -11,12 +11,13 @@
     }
   },
   "scripts": {
-    "build:clean": "rm -rf dist && yarn build:esm && yarn build:cjs",
-    "build": "yarn build:esm && yarn build:cjs",
+    "clean_and_build:all": "rm -rf dist && yarn build:esm && yarn build:cjs",
+    "build:all": "yarn build:esm && yarn build:cjs",
     "build:esm": "esbuild src/index.js --format=esm --platform=node --outfile=dist/index.js",
     "build:cjs": "node build-cjs.cjs",
-    "test": "yarn mocha test/tests --recursive --reporter spec --exit --timeout 10000",
-    "test:importing": "yarn mocha --recursive test-importing/tests --reporter spec --exit"
+    "build_and_test": "yarn build:clean && yarn mocha test/tests --recursive --reporter spec --exit --timeout 20000",
+    "test:main": "yarn mocha test/tests --recursive --reporter spec --exit",
+    "test-importing:run": "yarn mocha --recursive test-importing/tests --reporter spec --exit"
   },
   "imports": {
     "#projectRoot": "./",
@@ -39,6 +40,7 @@
     "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.15",
     "chai": "^4.3.7",
     "esbuild": "^0.25.3",
-    "mocha": "^10.1.0"
+    "mocha": "^10.1.0",
+    "rimraf": "^6.0.1"
   }
 }

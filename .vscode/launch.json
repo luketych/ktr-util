@@ -4,84 +4,67 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "build:clean (esm + cjs)",
+      "name": "🧹🔧 clean_and_build:all",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "build:clean"
-      ],
+      "runtimeArgs": [ "run", "clean_and_build:all" ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }, {
       "type": "node",
       "request": "launch",
-      "name": "build (esm + cjs)",
+      "name": "🔨🏠 build:all",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "build"
-      ],
+      "runtimeArgs": [ "run", "build:all" ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }, {
       "type": "node",
       "request": "launch",
-      "name": "build:esm",
+      "name": "🔨📦 build:esm",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "build:esm"
-      ],
+      "runtimeArgs": [ "run", "build:esm" ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }, {
       "type": "node",
       "request": "launch",
-      "name": "build:cjs",
+      "name": "🔨📦 build:cjs",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "build:cjs"
-      ],
+      "runtimeArgs": [ "run", "build:cjs" ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }, {
       "type": "node",
       "request": "launch",
-      "name": "test",
+      "name": "🔨🧪 build_and_test",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "test"
-      ],
+      "runtimeArgs": [ "run", "build_and_test" ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "🧪🚀 test:main",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [ "run", "test:main" ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }, 
-    
-    
-    
     {
-      "name": "test-importing setup",
+      "name": "🧪🔧 test-importing:setup",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}/test-importing",
       "runtimeExecutable": "yarn",
-      "runtimeArgs": [
-        "run",
-        "setup"
-      ],
+      "runtimeArgs": [ "run", "setup" ],
       "console": "integratedTerminal"
     },
-
     {
       "type": "node",
       "request": "launch",
-      "name": "test:importing",
+      "name": "🧪🚀 test-importing:run",
       "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "test:importing"
-      ],
+      "runtimeArgs": [ "run", "test-importing" ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
