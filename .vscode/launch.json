@@ -1,0 +1,72 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build:clean (esm + cjs)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "build:clean"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "build (esm + cjs)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "build"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "build:esm",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "build:esm"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "build:cjs",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "build:cjs"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "test",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }, {
+      "type": "node",
+      "request": "launch",
+      "name": "test:importing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test:importing"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}

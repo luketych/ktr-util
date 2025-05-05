@@ -1,48 +1,46 @@
-import Holidays from 'date-holidays'
-
+import Holidays from 'date-holidays';
 
 /**
- *  @type {string[]}
+ * List of stock market holidays.
+ * @type {string[]}
  */
 const stockMarketHolidayNames = [
-    "Martin Luther King Jr. Day", "Washington's Birthday", "Good Friday",
-    "Memorial Day", "Juneteenth", "Independence Day", "Labor Day",
-    "Thanksgiving Day", "Christmas Day",
-]
+  "Martin Luther King Jr. Day",
+  "Washington's Birthday",
+  "Good Friday",
+  "Memorial Day",
+  "Juneteenth",
+  "Independence Day",
+  "Labor Day",
+  "Thanksgiving Day",
+  "Christmas Day",
+];
 
 /**
- *  @typedef {import('date-holidays').Holidays} Holidays
- *  @type    {Holidays}
+ * U.S. holiday provider
+ * @type {import('date-holidays')}
  */
-const hdays = new Holidays('US')
-
+const hdays = new Holidays('US');
 
 /**
- *  @param   {string}    dtISO
- *  @returns {boolean}
+ * Determine if the market is open on a given date.
+ * @param {string} [dtISO] - Optional ISO date string. Defaults to today.
+ * @returns {boolean}
  */
-export default function isMarketOpenToday(dtISO = ( new Date()).toISOString()) {
-    dtISO = (new Date(dtISO)).toISOString()
+export default function isMarketOpenToday(dtISO = new Date().toISOString()) {
+  dtISO = new Date(dtISO).toISOString(); // normalize
 
-    const year = dtISO.split('T')[0].split('-')[0]
-    const day = new Date(dtISO).getUTCDay()
+  const [year] = dtISO.split('T');
+  const dayOfWeek = new Date(dtISO).getUTCDay();
 
-    if (day == 0 || day == 6) {
-        return false
-    }
+  // Weekends
+  if (dayOfWeek === 0 || dayOfWeek === 6) return false;
 
-    let usaHolidays = hdays.getHolidays(year)
-    const holidays = stockMarketHolidayNames.map(holidayName => {
-        return usaHolidays.map(holiday => holiday.name).indexOf(holidayName)
-    }).filter(el => el !== -1).map(el => usaHolidays[el])
+  const holidays = hdays.getHolidays(year).filter(h =>
+    stockMarketHolidayNames.includes(h.name)
+  );
 
-    // replace H:M:S with 00:00:00
-    const dt_str = dtISO.split('T')[0] + ' 00:00:00'
+  const targetDate = dtISO.split('T')[0] + ' 00:00:00';
 
-    let holidayDates = holidays.map(holiday => holiday.date)
-    if (holidayDates.includes(dt_str)) {
-        return false
-    }
-
-    return true
+  return !holidays.some(h => h.date === targetDate);
 }

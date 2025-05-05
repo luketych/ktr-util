@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
       "baseUrl": "./",
       "target": "es6",
       "module": "commonjs",
@@ -15,5 +16,15 @@
       }
   },
 
+=======
+    "baseUrl": "./",
+    "paths": {
+      "#projectRoot": ["."],
+      "#projectRoot/*": ["./*.js"],
+      "#src": ["./src"],
+      "#src/*": ["./src/*.js"],
+    }
+  },
+>>>>>>> develop
   "exclude": ["node_modules"]
 }

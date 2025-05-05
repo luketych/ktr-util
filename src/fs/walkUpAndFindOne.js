@@ -14,7 +14,7 @@ import path from 'path'
  * @param {string} [endPath='/']
  * @returns {unknown}
  */
-export default async function walkUpAndFindOne(filename, startDirPath, endPath='/') {
+export default async function walkUpAndFindOne(name, startDirPath, endPath='/') {
   if (!startDirPath || path.extname(startDirPath)) throw new Error(`Invalid startPath: ${startDirPath}`)
   
   let currPath = path.resolve(startDirPath)
@@ -29,7 +29,8 @@ export default async function walkUpAndFindOne(filename, startDirPath, endPath='
         return;
       }
 
-      if (files.includes(filename)) return path.resolve(currPath, filename)
+      if (files.includes(name)) return path.resolve(currPath, name)
+
       else currPath = path.resolve(currPath, '..')
     
   } while (currPath !== endPath)

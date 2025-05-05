@@ -1,5 +1,3 @@
-import { omit } from 'lodash-es'
-
 // @test
 
 import cleanStringForObjectExtraction from './controlScript/cleanStringForObjectExtraction.js'
@@ -48,6 +46,8 @@ import getPackageJSONasObj from './pkgJSON/getPackageJSONasObj.js'
 import getPackageName from './pkgJSON/getPackageName.js'
 import getScopeName from './pkgJSON/getScopeName.js'
 
+import profileImport from './profiler/profileImport.js'
+
 import changePropNames from './props/changePropNames.js'
 import filterForProps from './props/filterForProps.js'
 import filterOutProps from './props/filterOutProps.js'
@@ -60,6 +60,9 @@ import getTestDir from './testing/getTestDir.js'
 
 import nyToUTC from './timezone/nyToUTC.js'
 import utcToNY from './timezone/utcToNY.js'
+
+import findWorkspaceRoot from './yarnWorkspace/findWorkspaceRoot.js'
+import getWorkspaceURIs from './yarnWorkspace/getWorkspaceURIs.js'
 
 
 export {changePropNames}
@@ -77,6 +80,7 @@ export {extractObjectsFromString}
 export {extractTags}
 export {filterForProps}
 export {filterOutProps}
+export {findWorkspaceRoot}
 export {flatten}
 export {getAbsPathOfDirName}
 export {getCaller}
@@ -93,11 +97,13 @@ export {getPackageName}
 export {getScopeName}
 export {getTestDir}
 export {getTimeslot}
+export {getWorkspaceURIs}
 export {isMarketClosed}
 export {isMarketOpen}
 export {isMarketOpenToday}
 export {isPath}
 export {nyToUTC}
+export {profileImport}
 export {rmNewLineChars}
 export {sendMail}
 export {setupStackTrace}
@@ -153,6 +159,10 @@ const objects = { flatten }
 const pkgJSON = { getFullPackageName, getPackageName, getScopeName, getPackageJSONasObj }
 
 
+// profiler
+const profiler = { profileImport }
+
+
 // props
 const props = { changePropNames, filterForProps, filterOutProps }
 
@@ -173,6 +183,10 @@ const testing = { getTestDir }
 const timezone = { nyToUTC, utcToNY }
 
 
+// yarnWorkspace
+const yarnWorkspace = { findWorkspaceRoot, getWorkspaceURIs }
+
+
 export default {
   controlScript,
   date,
@@ -187,5 +201,11 @@ export default {
   props,
   stackTrace,
   testing,
-  timezone
+  timezone,
+  profiler,
+  props,
+  stackTrace,
+  testing,
+  timezone,
+  yarnWorkspace
 }

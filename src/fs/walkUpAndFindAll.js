@@ -1,34 +1,36 @@
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 
-import checkPathExists from './checkPathExists.js'
-
-
-/** Start from the startDirname and walk up the directory tree until the searchQuery is found, 
-    or reach the endDirname.
- * 
- * @param {String} searchQuery 
- * @param {String} startDirname 
- * @param {String} endDirname
- * @returns 
+/**
+ * Walk up the directory tree from `startDirPath` to `endPath`,
+ * collecting all paths where a file or folder named `targetName` exists.
+ *
+ * @param {string} targetName - The name of the file or folder to search for.
+ * @param {string} startDirPath - The directory to start walking from.
+ * @param {string} [endPath='/'] - The directory to stop at (inclusive).
+ * @returns {Promise<string[]>} Array of full paths where the file/folder is found.
  */
-export default async function walkUpAndFindAll(searchQuery, startDirname, endDirname='/') {
-    if (!startDirname || path.extname(startDirname)) throw new Error(`Invalid startPath: ${startDirname}`)
-    
-    let currDirname = startDirname
+export default async function walkUpAndFindAll(targetName, startDirPath, endPath = '/') {
+  if (!startDirPath || path.extname(startDirPath)) {
+    throw new Error(`Invalid start path: ${startDirPath}`);
+  }
 
-    const ret_paths = []
+  const foundPaths = [];
+  let currDir = startDirPath;
 
-    do {
-        let searchPath = path.join(currDirname, searchQuery)
-        let doesPathExist = await checkPathExists(searchPath)
-        if (doesPathExist) ret_paths.push( path.join(searchPath) )
+  while (true) {
+    try {
+      const files = await fs.promises.readdir(currDir);
+      if (files.includes(targetName)) {
+        foundPaths.push(path.join(currDir, targetName));
+      }
+    } catch (err) {
+      console.warn(`Unable to read directory ${currDir}: ${err.message}`);
+    }
 
+    if (currDir === endPath || currDir === path.dirname(currDir)) break;
+    currDir = path.dirname(currDir);
+  }
 
-        if (currDirname !== endDirname) currDirname = path.join(currDirname, '..') 
-        else if (currDirname === endDirname) break
-    } 
-    while (currDirname !== '/')
-
-
-    return ret_paths
+  return foundPaths;
 }

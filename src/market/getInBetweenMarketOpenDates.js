@@ -1,6 +1,4 @@
-import dateFns from 'date-fns'
-
-const {addDays} = dateFns
+import { addDays } from 'date-fns';
 
 
 /** Given a dtfrom & dtto, return a list of ISO dt strings of the days in between where the market is open.

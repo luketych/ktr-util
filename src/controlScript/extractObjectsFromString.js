@@ -1,8 +1,6 @@
-import { rmNewLineChars } from 'ktr-util'
+import { rmNewLineChars } from '@ktr-srt/util'
 
 import cleanStringForObjectExtraction from './cleanStringForObjectExtraction.js'
-
-
 
 
 /** Attempts to parse through a string and extract all objects, ie { ... }
