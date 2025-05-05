@@ -63,6 +63,7 @@ typings/
 !.yarn/versions
 
 # Other
+.DS_Store
 .lock-wscript
 .dynamodb/
 .fusebox/
