@@ -34,6 +34,7 @@ import getFullPackageName from "./pkgJSON/getFullPackageName.js";
 import getPackageJSONasObj from "./pkgJSON/getPackageJSONasObj.js";
 import getPackageName from "./pkgJSON/getPackageName.js";
 import getScopeName from "./pkgJSON/getScopeName.js";
+import profileImport from "./profiler/profileImport.js";
 import changePropNames from "./props/changePropNames.js";
 import filterForProps from "./props/filterForProps.js";
 import filterOutProps from "./props/filterOutProps.js";
@@ -42,6 +43,8 @@ import setupStackTrace from "./stackTrace/setupStackTrace.js";
 import getTestDir from "./testing/getTestDir.js";
 import nyToUTC from "./timezone/nyToUTC.js";
 import utcToNY from "./timezone/utcToNY.js";
+import findWorkspaceRoot from "./yarnWorkspace/findWorkspaceRoot.js";
+import getWorkspaceURIs from "./yarnWorkspace/getWorkspaceURIs.js";
 const controlScript = {
   cleanStringForObjectExtraction,
   execFeathersPackageAsChild,
@@ -81,11 +84,13 @@ const market = {
 const node = { getCaller };
 const objects = { flatten };
 const pkgJSON = { getFullPackageName, getPackageName, getScopeName, getPackageJSONasObj };
+const profiler = { profileImport };
 const props = { changePropNames, filterForProps, filterOutProps };
 const re = { extractTags };
 const stackTrace = { setupStackTrace };
 const testing = { getTestDir };
 const timezone = { nyToUTC, utcToNY };
+const yarnWorkspace = { findWorkspaceRoot, getWorkspaceURIs };
 var index_default = {
   controlScript,
   date,
@@ -97,10 +102,12 @@ var index_default = {
   node,
   objects,
   pkgJSON,
+  profiler,
   props,
   stackTrace,
   testing,
-  timezone
+  timezone,
+  yarnWorkspace
 };
 export {
   changePropNames,
@@ -119,6 +126,7 @@ export {
   extractTags,
   filterForProps,
   filterOutProps,
+  findWorkspaceRoot,
   flatten,
   getAbsPathOfDirName,
   getCaller,
@@ -135,11 +143,13 @@ export {
   getScopeName,
   getTestDir,
   getTimeslot,
+  getWorkspaceURIs,
   isMarketClosed,
   isMarketOpen,
   isMarketOpenToday,
   isPath,
   nyToUTC,
+  profileImport,
   rmNewLineChars,
   sendMail,
   setupStackTrace,

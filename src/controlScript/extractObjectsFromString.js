@@ -1,4 +1,4 @@
-import { rmNewLineChars } from '@ktr-srt/util'
+import { rmNewLineChars } from 'ktr-util'
 
 import cleanStringForObjectExtraction from './cleanStringForObjectExtraction.js'
 

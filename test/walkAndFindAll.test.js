@@ -4,7 +4,7 @@ import path from 'path'
 
 const expect = chai.expect
 
-import {getDirname} from '@ktr-srt/util'
+import {getDirname} from 'ktr-util'
 
 import {walkUpAndFindAll} from '#src'
 
